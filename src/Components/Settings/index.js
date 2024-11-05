@@ -1,45 +1,31 @@
-import { View, Text, StyleSheet, Switch, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, Switch, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Avatar from '../Avatar';
 
 const SettingsCard = ({ isDarkMode, toggleSwitch }) => {
-
-  const handleSignOut = () => {
-    Alert.alert("Sign Out", "Are you sure you want to sign out?", [
-      {
-        text: "Cancel",
-        style: "cancel"
-      },
-      { text: "OK", onPress: () => console.log("Signed out") }
-    ]);
-  };
-
   return (
     <View style={[styles.container, isDarkMode && styles.darkContainer]}>
+      <Avatar/>
       <View style={styles.section}>
+        <Text style={[styles.header, isDarkMode && styles.darkText]}>Profile</Text>
         <TouchableOpacity style={[styles.rowWithBackground, isDarkMode ? styles.darkRow : styles.lightRow]}>
-          <Icon name="person-circle-outline" size={24} color={isDarkMode ? "white" : "gray"} />
-          <Text style={[styles.item, isDarkMode && styles.darkText]}>My Accounts</Text>
+          <Icon name="person" size={24} color={isDarkMode ? "white" : "gray"} />
+          <Text style={[styles.item, isDarkMode && styles.darkText]}>Accounts</Text>
           <Icon name="chevron-forward-outline" size={24} color={isDarkMode ? "white" : "gray"} />
         </TouchableOpacity>
       </View>
-      <View style={styles.section}>
-  <TouchableOpacity style={[styles.rowWithBackground, isDarkMode ? styles.darkRow : styles.lightRow]}>
-    <Icon name="key" size={24} color={isDarkMode ? "white" : "gray"} />  
-    <Text style={[styles.item, isDarkMode && styles.darkText]}>Security</Text>
-    <Icon name="chevron-forward-outline" size={24} color={isDarkMode ? "white" : "gray"} />
-  </TouchableOpacity>
-</View>
-
-      
 
       <View style={styles.section}>
         <TouchableOpacity style={[styles.rowWithBackground, isDarkMode ? styles.darkRow : styles.lightRow]}>
-          <Icon name="notifications-outline" size={24} color={isDarkMode ? "white" : "gray"} />
-          <Text style={[styles.item, isDarkMode && styles.darkText]}>Notifications</Text>
+          <Icon name="key" size={24} color={isDarkMode ? "white" : "gray"} />
+          <Text style={[styles.item, isDarkMode && styles.darkText]}>Passwords</Text>
           <Icon name="chevron-forward-outline" size={24} color={isDarkMode ? "white" : "gray"} />
         </TouchableOpacity>
+      </View>
+
+      <View style={styles.section}>
         <View style={[styles.rowWithBackground, isDarkMode ? styles.darkRow : styles.lightRow]}>
-          <Icon name="moon-outline" size={24} color={isDarkMode ? "white" : "gray"} />
+          <Icon name="moon" size={24} color={isDarkMode ? "white" : "gray"} />
           <Text style={[styles.item, isDarkMode && styles.darkText]}>Dark Mode</Text>
           <Switch
             trackColor={{ false: "#767577", true: "#81C784" }}
@@ -47,43 +33,44 @@ const SettingsCard = ({ isDarkMode, toggleSwitch }) => {
             onValueChange={toggleSwitch}
             value={isDarkMode}
           />
+          
         </View>
-      </View>
-
-      <TouchableOpacity style={[styles.signOutButton, isDarkMode && styles.darkSignOutButton]} onPress={handleSignOut}>
+        <TouchableOpacity style={[styles.signOutButton, isDarkMode && styles.darkSignOutButton]}>
         <Text style={[styles.signOutText, isDarkMode && styles.darkSignOutText]}>Log Out</Text>
       </TouchableOpacity>
     </View>
+      </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    padding: 30,
-    backgroundColor: '#F7F7F7', 
-    borderRadius: 10,
-    shadowColor: "#000",
-    shadowOpacity: 0.1,
-    shadowRadius: 10,
-    elevation: 20,
-    marginBottom: -10,
+    flex: 1, 
+    justifyContent: 'center',
+    width: '100%',
+    height: 250, 
+    marginBottom: -100,
+    padding: 20,
+    paddingBottom: 150,
+
     
   },
   darkContainer: {
-    backgroundColor: '#1C1C1E',
+    backgroundColor: '#1C1C1E', 
     shadowColor: "#000",
     shadowOpacity: 0.4,
     shadowRadius: 10,
     elevation: 5,
+    paddingBottom: 150,
   },
+  
   rowWithBackground: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: 15,
     borderRadius: 10,
-    marginVertical: 8,
-    
+    marginVertical: 15, 
   },
   lightRow: {
     backgroundColor: '#FFFFFF',
@@ -98,7 +85,7 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 22,
     fontWeight: '700',
-    marginBottom: 10,
+    marginBottom: 5, 
     color: '#000',
   },
   darkText: {
@@ -113,33 +100,23 @@ const styles = StyleSheet.create({
   signOutButton: {
     marginTop: 20,
     paddingVertical: 15,
-    backgroundColor: 'white', 
-    borderColor: 'black', 
+    backgroundColor: 'white',
+    borderColor: 'black',
     borderRadius: 10,
     alignItems: 'center',
-    borderWidth: 1, 
-    elevation: 3, 
-    shadowColor: '#000', 
-    shadowOffset: { width: 0, height: 2 }, 
-    shadowOpacity: 0.2, 
-    shadowRadius: 3, 
+    borderWidth: 1,
   },
-
   darkSignOutButton: {
-    backgroundColor:'#000',
-    borderColor: 'white', 
-
+    backgroundColor: '#000',
+    borderColor: 'white',
   },
   signOutText: {
     fontSize: 18,
-    color:'black',
+    color: 'black',
     fontWeight: 'bold',
   },
-
   darkSignOutText: {
-    fontSize: 18,
-    color:'white',
-    fontWeight: 'bold',
+    color: 'white',
   },
 });
 

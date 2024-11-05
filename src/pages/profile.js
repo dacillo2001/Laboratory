@@ -2,7 +2,7 @@ import React from 'react';
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import { View, Button, StyleSheet } from 'react-native';
 import Avatar from './src/Components/Avatar';
-import SettingsCard from './src/Components/Settings';
+import Settings from './src/Components/Settings';
 
 export default function App() {
   return (
@@ -10,7 +10,7 @@ export default function App() {
       <SafeAreaView style={styles.container}>
         <Avatar />
         <View style={styles.cardContainer}>
-          <SettingsCard />
+          <Settings />
         </View>
         <Button title="Log Out" onPress={() => console.log('Signing out...')} />
       </SafeAreaView>

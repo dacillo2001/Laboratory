@@ -6,7 +6,7 @@ const Avatar = ({ isDarkMode }) => {
   return (
     <View style={[styles.container, isDarkMode && styles.darkContainer]}>
       <TouchableOpacity style={styles.menuButton}>
-        <Icon name="ellipsis-vertical" size={24} color={isDarkMode ? "white" : "black"} />
+        <Icon name="ellipsis-vertical" size={24} color={isDarkMode ? "white" : "black"}  />
       </TouchableOpacity>
       <View style={styles.content}>
         <Image
@@ -26,25 +26,25 @@ const Avatar = ({ isDarkMode }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'skyblue',
     flex: 1, 
     justifyContent: 'center',
     alignItems: 'flex-start', 
     width: '100%',
     height: 250, 
-    marginBottom: -10,
+    marginBottom: -20,
     padding: 20,
   },
   darkContainer: {
-    backgroundColor: 'black', 
+    backgroundColor: 'white', 
   },
   menuButton: {
     alignSelf: 'flex-end',
-    marginBottom: 10, 
+    marginBottom: 10,
   },
   content: {
     flexDirection: 'column', 
-    alignItems: 'flex-start', 
+    alignItems: 'center',
+    left: 40,
   },
   image: {
     width: 150,
@@ -58,38 +58,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center', 
     padding: 10,  
     borderRadius: 10,  
-    maxWidth: '80%', 
+    maxWidth: '100%', 
+    alignItems: 'center',
   },
   nameText: {
     fontSize: 18,  
     fontWeight: 'bold',
-    color: 'black',  
-    textShadowColor: '#FFFFFF', 
-    textShadowOffset: { width: 1, height: 1 }, 
-    textShadowRadius: 2, 
-    marginBottom: 3,  
+    color: 'gray',  
+    marginBottom: 5,
   },
   darkText: {
-    color: 'white',  
-    textShadowColor: '#FFFFFF', 
-    textShadowOffset: { width: 1, height: 1 }, 
+    color: 'black',
   },
   statusText: {
     fontSize: 14,
     fontWeight: 'bold',
-    color: 'gray',  
-    textShadowColor: '#FFFFFF',
-    textShadowOffset: { width: 1, height: 1 },
-    textShadowRadius: 2, 
+    color: 'gray',
   },
-  darkStatusText: {
-    fontSize: 14,
-    fontWeight: 'bold',
-    color: 'gray',  
-    textShadowColor: '#FFFFFF', 
-    textShadowOffset: { width: 1, height: 1 }, 
-    textShadowRadius: 2, 
-  },
+
 });
 
 export default Avatar;
