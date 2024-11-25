@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {useRouter} from 'expo-router';
 
-export default function LoginScreen({ navigation }) {
+export default function LoginScreen() {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -34,21 +36,21 @@ export default function LoginScreen({ navigation }) {
 
         <TouchableOpacity
           style={styles.forgotPasswordLink}
-          onPress={() => navigation.navigate('Password')}
+          onPress={() => router.push('recover')}
         >
           <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('Settings')}  
+          onPress={() => router.replace('Dashboard')}  
         >
           <Text style={styles.buttonText}>Log In</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.registerLink}
-          onPress={() => navigation.navigate('Register')}
+          onPress={() => router.push('register')}
         >
           <Text style={styles.registerText}>Don't have an account? Sign Up</Text>
         </TouchableOpacity>

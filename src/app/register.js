@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import {useRouter} from 'expo-router';
 
-const Register = ({ navigation }) => { 
+
+const Register = () => { 
+  const router = useRouter();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -12,20 +15,6 @@ const Register = ({ navigation }) => {
     password: '',
     confirmPassword: ''
   });
-
-  const handleRegister = () => {
-    navigation.navigate('Login');
-    setFormData({
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      birthDate: '',
-      gender: '',
-      password: '',
-      confirmPassword: ''
-    });
-  };
 
   return (
     <View style={styles.background}>
@@ -86,7 +75,21 @@ const Register = ({ navigation }) => {
           />
         </ScrollView>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button} onPress={handleRegister}>
+          <TouchableOpacity style={styles.button} 
+          onPress = {() => {
+                router.back('index');
+                setFormData({
+                  firstName: '',
+                  lastName: '',
+                  email: '',
+                  phone: '',
+                  birthDate: '',
+                  gender: '',
+                  password: '',
+                  confirmPassword: ''
+                });
+          }}
+          >
             <Text style={styles.buttonText}>Register</Text>
           </TouchableOpacity>
         </View>
